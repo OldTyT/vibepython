@@ -59,10 +59,10 @@ To exit, press Ctrl+C.
 ## Environment Variables
 Customize the tool using these environment variables:
 - **HISTORY_PATH**: Path to the JSON history file. Default: `history.json`.
-- **HISTORY_SIZE**: Number of past interactions to include in AI context. Default: `20`.
+- **HISTORY_SIZE**: Number of past interactions to include in AI context. Default: `7`.
 - **OPENAI_API_KEY**: Required for the 'openai' provider; your OpenAI API key.
 - **PROVIDER**: AI provider to use. Supports 'gpt4free' (default) and 'openai'.
-- **MODEL_NAME**: Model to use with the provider. For 'gpt4free': 'gpt-4o-mini'. For 'openai': 'gpt-5-mini'.
+- **MODEL_NAME**: Model to use with the provider. For 'gpt4free': 'gpt-4o'. For 'openai': 'gpt-5-mini'.
 
 Example configuration:
 ```
