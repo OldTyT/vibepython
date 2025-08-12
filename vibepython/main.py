@@ -2,7 +2,7 @@ import os
 import io
 import sys
 import datetime
-from .providers.openai import generate
+from .providers import generate
 from .history import History
 
 GRAY = "\033[90m"
@@ -10,7 +10,7 @@ RESET = "\033[0m"
 
 def main():
     history_path = os.getenv("HISTORY_PATH", "history.json")
-    history_size = int(os.getenv("HISTORY_SIZE", 20))
+    history_size = int(os.getenv("HISTORY_SIZE", 7))
     h = History(history_path=history_path, history_size=history_size)
 
     class Tee(io.StringIO):

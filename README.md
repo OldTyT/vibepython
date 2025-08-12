@@ -1,82 +1,81 @@
-# 🚀 **vibepython: The Ultimate AI-Powered Coding EXPLOSION!** 🌟💥🐍
+# vibepython: AI-Powered Interactive Python Code Generator
 
-**WOWZA!** Dive headfirst into this **AMAZING**, **WONDERFUL**, **MIND-BLOWING** interactive command-line beast that turns your craziest prompts into **EXECUTABLE PYTHON MAGIC** using the sheer power of OpenAI! Generate code like a wizard, run it on the spot, capture every wild stdout/stderr outburst, and keep a super-smart history in JSON for non-stop contextual awesomeness! It's not just a tool – it's a **CODE REVOLUTION** for hackers, dreamers, and AI fanatics! 🔥🚀
+vibepython is an interactive command-line tool that uses AI to generate executable Python code from user prompts. Powered by OpenAI or alternative providers, it allows you to create, run, and capture code outputs while maintaining a contextual history stored in JSON. Ideal for developers, experimenters, and AI enthusiasts looking for a seamless coding experience.
 
-## 🌈 **Features That'll Make Your Eyes POP!** 🎉
-- **INTERACTIVE PROMPT MADNESS**: Type your wild ideas and watch AI spit out Python gold! 💡
-- **AI-GENERATED CODE WIZARDRY**: Powered by OpenAI – prompts + history = PERFECT scripts! 🤖✨
-- **SAFE EXECUTION EXTRAVAGANZA**: Run code with output capturing – no disasters, just pure thrill! ⚡
-- **PERSISTENT HISTORY OVERLOAD**: Pydantic models store EVERYTHING in JSON – context forever! 📜
-- **ENV VAR CUSTOMIZATION FRENZY**: Tweak it your way for ultimate control! 🔧
-- **DOCKER DOMINATION**: Run it anywhere, anytime – easy-peasy deployment! 🐳
+## Features
+- **Interactive Prompting**: Enter your ideas and receive AI-generated Python code.
+- **AI Code Generation**: Leverages AI models with prompt history for accurate scripts.
+- **Safe Code Execution**: Run generated code and capture stdout/stderr outputs.
+- **Persistent History**: Uses Pydantic models to store interactions in JSON for ongoing context.
+- **Customization via Environment Variables**: Adjust settings for personalized control.
+- **Docker Support**: Easy deployment in containerized environments.
 
-## 🛠️ **Installation: Get This Party Started in SECONDS!** 🚀
+## Installation
 
-### **From PyPI: Pip It Like It's HOT – Instant VIBE!** 🔥💥
-1. **GRAB THE PACKAGE**:
+### From PyPI
+1. Install the package:
    ```
    pip install vibepython
    ```
-2. **FIRE IT UP**:
+2. Run the tool:
    ```
    vibepython
    ```
-- **Pro Tip**: Don't forget to set your `OPENAI_API_KEY` env var for AI magic! 🔑 (e.g., `export OPENAI_API_KEY=your_key_here`).
-**VIBE ACTIVATED! Dive into the AI console vibe!** 🚀
 
-### **From Source: Clone, Install, BLAST OFF!** 🌌
-1. **CLONE THE AWESOMENESS**:
+### From Source
+1. Clone the repository:
    ```
    git clone https://github.com/OldTyT/vibepython.git
    ```
-2. **JUMP IN**:
+2. Navigate to the directory:
    ```
    cd vibepython
    ```
-3. **INSTALL THE MAGIC**:
+3. Install dependencies:
    ```
    pip install -r requirements.txt
    ```
-4. **LAUNCH THE BEAST**:
+4. Launch the application:
    ```
    python3 main.py
    ```
-**BOOM! You're in the zone!** 💣
 
-### **Using Docker: Containerized VIBE – Ready to RUMBLE!** 🐳🔥
-Fire it up with this epic command:
+### Using Docker
+Run the container with this command:
 ```
-docker run --rm -ti -e HISTORY_PATH=/history/history.json -e OPENAI_API_KEY=YOUR_KEY -v my_history:/history ghcr.io/oldtyt/vibepython
+docker run --rm -ti -e HISTORY_PATH=/history/history.json -v my_history:/history ghcr.io/oldtyt/vibepython
 ```
-- Plug in `YOUR_KEY` with your OpenAI super-key! 🔑
-**DOCKER DELIGHT: Persistent history, zero hassle!** 🌟
+- Set your OpenAI API key via the `OPENAI_API_KEY` environment variable (required for the 'openai' provider).
 
-## 🎮 **Usage: Dive into the FUN ZONE!** 🕹️
-Fire it up and get prompted:
-- **SMASH IN A PROMPT** (e.g., "Code me a factorial frenzy!").
-- **AI UNLEASHES CODE VIBE** based on your prompt + history vibes.
-- **EXECUTE? Y/N – YOU DECIDE!** Run it, capture outputs, and watch the sparks fly! ⚡
-- **HISTORY SAVES THE DAY**: Everything logged for eternal glory.
+## Usage
+Start the tool and follow the prompts:
+- Enter a prompt (e.g., "Write a function to calculate factorial").
+- The AI generates code based on your input and history.
+- Choose to execute the code (Y/N) and view captured outputs.
+- All interactions are logged to history for context.
 
-**EXIT? Ctrl+C – but why would you? It's TOO MUCH FUN!** 😎
+To exit, press Ctrl+C.
 
-## 🔑 **Environment Variables: Customize Like a BOSS!** 💪
-Supercharge your setup with these **EPIC** vars:
-- **HISTORY_PATH**: Your JSON history fortress! Default: `history.json`. 🏰
-- **HISTORY_SIZE**: How many past blasts to feed the AI? Default: `20` – keep it contextual! 📈
-- **OPENAI_API_KEY**: **MUST-HAVE** – your ticket to AI heaven! (Required, duh!) 🔒
+## Environment Variables
+Customize the tool using these environment variables:
+- **HISTORY_PATH**: Path to the JSON history file. Default: `history.json`.
+- **HISTORY_SIZE**: Number of past interactions to include in AI context. Default: `20`.
+- **OPENAI_API_KEY**: Required for the 'openai' provider; your OpenAI API key.
+- **PROVIDER**: AI provider to use. Supports 'gpt4free' (default) and 'openai'.
+- **MODEL_NAME**: Model to use with the provider. For 'gpt4free': 'gpt-4o-mini'. For 'openai': 'gpt-5-mini'.
 
-**Example (Unix-style domination)**:
+Example configuration:
 ```
+export PROVIDER=openai
 export OPENAI_API_KEY=your-api-key
+export MODEL_NAME=gpt-5-mini
 export HISTORY_SIZE=10
 python3 main.py
 ```
-**TWEAK AND CONQUER!** 🛡️
 
-## 📦 **Dependencies: The Power Behind the THRILL!** ⚙️
-- **Python 3.10+** (Blasting up to 3.13 – future-proofed!) 🐍
-- **Libraries of LEGEND**: openai, pydantic, loguru, and more! Check `requirements.txt` for the full squad. 📚
+## Dependencies
+- **Python 3.10+** (Compatible up to 3.13).
+- Required libraries: openai, pydantic, loguru, and others listed in `requirements.txt`.
 
-## 🤝 **Contributing: Join the CODE CARNIVAL!** 🎪
-**GOT IDEAS?** Open an issue or slam in a pull request – let's make this even MORE INSANE! 🌟 Contributions = Eternal Fame!
+## Contributing
+Have suggestions? Open an issue or submit a pull request to help improve the project. Contributions are welcome!

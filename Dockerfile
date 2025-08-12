@@ -1,32 +1,35 @@
-ARG IMAGE=python:3.13-alpine
+ARG PYTHON_VERSION=3.11
 
-FROM $IMAGE AS builder
+FROM python:${PYTHON_VERSION}-slim-bookworm AS builder
+
+WORKDIR /app
 
 RUN python3 -m pip install build
+
+COPY . .
+RUN python3 -m build && \
+    mkdir /wheels/ && \
+    mv /app/dist/vibepython-*.whl /wheels/
+
+FROM python:${PYTHON_VERSION}-slim-bookworm AS dependency
 
 WORKDIR /app
 
 COPY requirements.txt .
 
-COPY . .
-RUN pip wheel --no-cache-dir --no-deps --wheel-dir /wheels -r requirements.txt && \
-    python3 -m build && \
-    mv /app/dist/vibepython-*.whl /wheels
-
-FROM $IMAGE
-
-WORKDIR /app
+RUN pip install --no-cache --no-cache-dir -r requirements.txt
 COPY --from=builder /wheels /wheels
+RUN pip install --no-cache --no-cache-dir /wheels/*
 
-RUN apk add --no-cache musl-locales musl-locales-lang
+FROM gcr.io/distroless/python3-debian12:debug
+ARG PYTHON_VERSION=3.11
+
+COPY --from=dependency /usr/local/lib/python${PYTHON_VERSION}/site-packages /usr/local/lib/python${PYTHON_VERSION}/site-packages
+
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
-    PYTHONIOENCODING=utf-8
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONFAULTHANDLER=1 \
+    PYTHONPATH=/usr/local/lib/python${PYTHON_VERSION}/site-packages
 
-RUN pip install --no-cache /wheels/*
-
-COPY . .
-
-ENTRYPOINT [ "vibepython" ]
-
-# CMD ["/app/main.py"]
+CMD [ "-m", "vibepython" ]
