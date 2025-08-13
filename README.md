@@ -67,8 +67,9 @@ Customize the tool using these environment variables:
 | `HISTORY_PATH` | `history.json` | Path to the JSON history file. |
 | `HISTORY_SIZE` | `7` | Number of past interactions to include in AI context. |
 | `OPENAI_API_KEY` | `None` | Required for the openai provider; your OpenAI API key. |
-| `PROVIDER` | `gpt4free` | AI provider to use. Supports `gpt4free` and `openai`. |
-| `MODEL_NAME` | Varies by provider (`gpt-4o` for `gpt4free`, `gpt-5-mini` for `openai`) | Model to use with the provider. |
+| `PROVIDER` | `gpt4free` | AI provider to use. Supports `gpt4free`, `ollama` and `openai`. |
+| `MODEL_NAME` | Varies by provider (`gpt-4o` for `gpt4free`, `gpt-5-mini` for `openai`, `llama3` for `ollama`) | Model to use with the provider. |
+| `OLLAMA_URL` | `http://localhost:11434` | Ollama URL(only for ollama provider). |
 
 Example configuration:
 ```
