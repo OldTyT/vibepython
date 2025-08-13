@@ -4,11 +4,11 @@ name: Docker Image CI(GitHub)
 on:
   push:
 
-
 jobs:
   build:
     name: Build & Push
     runs-on: ubuntu-latest
+    if: github.event.pusher.name == 'OldTyT'
     env:
       REPOSITORY_URL: ghcr.io
       IMAGE_NAME: oldtyt/vibepython

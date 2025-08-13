@@ -33,3 +33,8 @@ vibepython = "vibepython.main:main"
 [project.urls]
 "Homepage" = "https://github.com/oldtyt/vibepython"
 "Source" = "https://github.com/oldtyt/vibepython"
+
+[tool.hatch.build]
+exclude = [
+    "/resources",
+]

@@ -21,7 +21,7 @@ RUN pip install --no-cache --no-cache-dir -r requirements.txt
 COPY --from=builder /wheels /wheels
 RUN pip install --no-cache --no-cache-dir /wheels/*
 
-FROM gcr.io/distroless/python3-debian12:debug
+FROM gcr.io/distroless/python3-debian12
 ARG PYTHON_VERSION=3.11
 
 COPY --from=dependency /usr/local/lib/python${PYTHON_VERSION}/site-packages /usr/local/lib/python${PYTHON_VERSION}/site-packages

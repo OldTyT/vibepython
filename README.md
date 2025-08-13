@@ -2,6 +2,11 @@
 
 vibepython is an interactive command-line tool that uses AI to generate executable Python code from user prompts. Powered by OpenAI or alternative providers, it allows you to create, run, and capture code outputs while maintaining a contextual history stored in JSON. Ideal for developers, experimenters, and AI enthusiasts looking for a seamless coding experience.
 
+## Example of work
+
+![alt text](https://raw.githubusercontent.com/OldTyT/vibepython/main/resources/img/example.png)
+
+
 ## Features
 - **Interactive Prompting**: Enter your ideas and receive AI-generated Python code.
 - **AI Code Generation**: Leverages AI models with prompt history for accurate scripts.
