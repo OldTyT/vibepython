@@ -18,8 +18,10 @@ WORKDIR /app
 COPY requirements.txt .
 
 RUN pip install --no-cache --no-cache-dir -r requirements.txt
+RUN pip uninstall -q -y pandas sympy onnxruntime SpeechRecognition numpy youtube-transcript-api pillow pdfminer.six Brotli lz4 azure google primp bs4 lxml
+
 COPY --from=builder /wheels /wheels
-RUN pip install --no-cache --no-cache-dir /wheels/*
+RUN pip install --no-cache --no-deps --no-cache-dir /wheels/*
 
 FROM gcr.io/distroless/python3-debian12
 ARG PYTHON_VERSION=3.11
