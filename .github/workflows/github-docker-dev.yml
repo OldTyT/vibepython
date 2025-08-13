@@ -1,16 +1,18 @@
 ---
-name: Docker Image CI(GitHub)
+name: Dev Docker Image CI(GitHub)
 
 on:
   push:
-    branches:
+    branches-ignore:
       - main
+    tags-ignore:
+      - '**'
 
 jobs:
   build:
     name: Build & Push
     runs-on: ubuntu-latest
-    # if: github.event.pusher.name == 'OldTyT'
+    if: github.event.pusher.name == 'OldTyT'
     env:
       REPOSITORY_URL: ghcr.io
       IMAGE_NAME: oldtyt/vibepython
@@ -24,8 +26,8 @@ jobs:
         id: docker-build
         run: >-
           docker build
-          -t $REPOSITORY_URL/$IMAGE_NAME:${{ steps.vars.outputs.SHORT_COMMIT_ID }}
-          -t $REPOSITORY_URL/$IMAGE_NAME:latest .
+          -t $REPOSITORY_URL/$IMAGE_NAME:dev-${{ steps.vars.outputs.SHORT_COMMIT_ID }}
+          -t $REPOSITORY_URL/$IMAGE_NAME:dev .
       - name: Docker Login
         uses: docker/login-action@v3
         with:

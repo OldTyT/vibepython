@@ -1,30 +1,26 @@
 ---
-name: Docker Image CI(GitHub)
+name: Tags Docker Image CI(GitHub)
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - 'v*.*.*'
 
 jobs:
   build:
     name: Build & Push
     runs-on: ubuntu-latest
-    # if: github.event.pusher.name == 'OldTyT'
     env:
       REPOSITORY_URL: ghcr.io
       IMAGE_NAME: oldtyt/vibepython
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-      - name: Variables
-        id: vars
-        run: echo "::set-output name=SHORT_COMMIT_ID::$(git rev-parse --short HEAD)"
       - name: Build image
         id: docker-build
         run: >-
           docker build
-          -t $REPOSITORY_URL/$IMAGE_NAME:${{ steps.vars.outputs.SHORT_COMMIT_ID }}
+          -t $REPOSITORY_URL/$IMAGE_NAME:${{ github.ref_name }}
           -t $REPOSITORY_URL/$IMAGE_NAME:latest .
       - name: Docker Login
         uses: docker/login-action@v3
