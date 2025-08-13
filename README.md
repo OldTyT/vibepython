@@ -56,18 +56,19 @@ docker run --rm -ti -e HISTORY_PATH=/history/history.json -v my_history:/history
 Start the tool and follow the prompts:
 - Enter a prompt (e.g., "Write a function to calculate factorial").
 - The AI generates code based on your input and history.
-- Choose to execute the code (Y/N) and view captured outputs.
 - All interactions are logged to history for context.
 
 To exit, press Ctrl+C.
 
 ## Environment Variables
 Customize the tool using these environment variables:
-- **HISTORY_PATH**: Path to the JSON history file. Default: `history.json`.
-- **HISTORY_SIZE**: Number of past interactions to include in AI context. Default: `7`.
-- **OPENAI_API_KEY**: Required for the 'openai' provider; your OpenAI API key.
-- **PROVIDER**: AI provider to use. Supports 'gpt4free' (default) and 'openai'.
-- **MODEL_NAME**: Model to use with the provider. For 'gpt4free': 'gpt-4o'. For 'openai': 'gpt-5-mini'.
+| Variable          | Default       | Description |
+|-------------------|---------------|-------------|
+| `HISTORY_PATH` | `history.json` | Path to the JSON history file. |
+| `HISTORY_SIZE` | `7` | Number of past interactions to include in AI context. |
+| `OPENAI_API_KEY` | `None` | Required for the openai provider; your OpenAI API key. |
+| `PROVIDER` | `gpt4free` | AI provider to use. Supports `gpt4free` and `openai`. |
+| `MODEL_NAME` | Varies by provider (`gpt-4o` for `gpt4free`, `gpt-5-mini` for `openai`) | Model to use with the provider. |
 
 Example configuration:
 ```
@@ -77,10 +78,3 @@ export MODEL_NAME=gpt-5-mini
 export HISTORY_SIZE=10
 python3 main.py
 ```
-
-## Dependencies
-- **Python 3.10+** (Compatible up to 3.13).
-- Required libraries: openai, pydantic, loguru, and others listed in `requirements.txt`.
-
-## Contributing
-Have suggestions? Open an issue or submit a pull request to help improve the project. Contributions are welcome!
