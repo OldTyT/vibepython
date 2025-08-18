@@ -1,4 +1,4 @@
-openai==1.99.9
+openai==1.100.0
 loguru==0.7.2
 pydantic==2.8.2
 pydantic-settings==2.4.0
