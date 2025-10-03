@@ -15,7 +15,7 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-    "openai>=1.56.0,<2.0.0",
+    "openai>=1.56.0,<3.0.0",
     "loguru>=0.7.0,<1.0.0",
     "pydantic>=2.8.0,<3.0.0",
     "pydantic-settings>=2.4.0,<3.0.0",
